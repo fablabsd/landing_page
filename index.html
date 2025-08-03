@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fab Lab San Diego | Legacy Impact</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="libs/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      :root {
+        --fl-blue: #00a6d6;
+        --fl-dark: #222;
+        --fl-light: #f8f9fa;
+        --fl-accent: #ff9d00;
+      }
+      body {
+        font-family: "Open Sans", sans-serif;
+        background: var(--fl-light);
+        color: var(--fl-dark);
+      }
+      a {
+        color: var(--fl-blue);
+      }
+      a:hover {
+        color: var(--fl-accent);
+      }
+      .navbar {
+        background: rgba(255, 255, 255, 0.92);
+      }
+      .hero {
+        position: relative;
+        height: 65vh;
+        min-height: 400px;
+        background: url("https://web.archive.org/web/20151001004853im_/http://www.fablabsd.org/wp-content/uploads/2015/09/fablab_banner.jpg")
+          center/cover no-repeat;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+      }
+      .hero > * {
+        position: relative;
+        z-index: 1;
+      }
+      .hero h1 {
+        font-size: clamp(2rem, 6vw, 4rem);
+        font-weight: 700;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      }
+      .btn-cta {
+        background: var(--fl-accent);
+        border: none;
+        color: #fff;
+        font-weight: 600;
+      }
+      .btn-cta:hover {
+        background: #ffa91f;
+      }
+      section {
+        padding: 4rem 0;
+      }
+      .section-title {
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: 2rem;
+      }
+      .card {
+        border: none;
+        border-radius: 0.75rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+      .card-icon {
+        font-size: 2.5rem;
+        color: var(--fl-accent);
+      }
+      footer {
+        background: var(--fl-dark);
+        color: #fff;
+        text-align: center;
+        padding: 2rem 0;
+      }
+      .logo-grid img {
+        max-height: 60px;
+        object-fit: contain;
+        filter: grayscale(100%) contrast(90%);
+      }
+      .logo-grid img:hover {
+        filter: none;
+        transition: 0.2s ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="libs/react.development.js"></script>
+    <script src="libs/react-dom.development.js"></script>
+    <script src="libs/babel.min.js"></script>
+    <script type="text/babel">
+      const impactStats = [
+        {
+          icon: "📚",
+          title: "4,000+ K\u201112 Learners",
+          text: "Free & low\u2011cost STEAM workshops across San Diego County.",
+        },
+        {
+          icon: "🛠️",
+          title: "$3.6\u202FM in Prototypes",
+          text: "Ideas realized using 3\u2011D printing, CNC, electronics, and skilled mentorship.",
+        },
+        {
+          icon: "🎪",
+          title: "25\u202Fk Maker Faire Visitors",
+          text: "Co\u2011produced the region's signature maker celebration every fall.",
+        },
+      ];
+
+      const startups = [
+        {
+          img: "logos/robo3d.svg",
+          name: "Robo\u00A03D",
+          desc: "Iterated its first desktop 3\u2011D printer in our shop and raised\u00A0$650\u202Fk on Kickstarter.",
+        },
+        {
+          img: "logos/pocket_drone.svg",
+          name: "Pocket\u00A0Drone",
+          desc: "AirDroids founders built and flight\u2011tested ultralight multirotor prototypes here.",
+        },
+        {
+          img: "logos/opensource_skateboards.svg",
+          name: "Open\u00A0Source Skateboards",
+          desc: "Pioneered vacuum\u2011press techniques and curriculum for DIY deck building.",
+        },
+      ];
+
+      const partners = [
+        { img: "logos/sdge.svg", alt: "SDG&E logo" },
+        { img: "logos/access_inc.svg", alt: "Access\u00A0Inc." },
+        { img: "logos/sdwp.svg", alt: "Workforce Partnership" },
+        { img: "logos/ansir.svg", alt: "Ansir Innovation Center" },
+        {
+          img: "logos/qualcomm_robotics.svg",
+          alt: "Qualcomm Robotics Accelerator",
+        },
+        {
+          img: "logos/cfa_brigade.svg",
+          alt: "Code for America Brigade",
+        },
+        { img: "logos/maker_faire_sd.svg", alt: "Maker Faire San Diego" },
+        { img: "logos/formlabs.svg", alt: "Formlabs" },
+        { img: "logos/xyzprinting.svg", alt: "XYZprinting" },
+        { img: "logos/solidworks.svg", alt: "SolidWorks" },
+        { img: "logos/epilog_laser.svg", alt: "Epilog Laser" },
+        { img: "logos/startup_san_diego.svg", alt: "Startup San Diego" },
+        { img: "logos/startup_weekend.svg", alt: "Startup Weekend" },
+        { img: "logos/connect_sd.svg", alt: "San Diego CONNECT" },
+      ];
+
+      const events = [
+        {
+          title: "South\u00A0by\u00A0Southwest Interactive (Austin,\u00A0TX)",
+          desc: "Panel sessions on maker education & open hardware (2012\u20132013).",
+        },
+        {
+          title: "Maker\u00A0Faire Bay Area (San\u00A0Mateo,\u00A0CA)",
+          desc: "Annual exhibits and hands\u2011on demos, 2008\u20132018.",
+        },
+        {
+          title: "San\u00A0Jose Mini\u00A0Maker\u00A0Faire (History\u00A0Park)",
+          desc: "Interactive booths and STEM workshops, 2015\u20132019.",
+        },
+        {
+          title:
+            "White House Maker\u00A0Faire (Washington,\u00A0DC \u2022 2014)",
+          desc: "Mobile Fab\u00A0Lab showcase hosted by Neil\u00A0Gershenfeld.",
+        },
+      ];
+
+      function Navbar() {
+        return (
+          <nav className="navbar navbar-expand-lg fixed-top shadow-sm">
+            <div className="container">
+              <a className="navbar-brand fw-bold" href="#">
+                Fab Lab San Diego
+              </a>
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#nav"
+                aria-controls="nav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span className="navbar-toggler-icon"></span>
+              </button>
+              <div
+                className="collapse navbar-collapse justify-content-end"
+                id="nav"
+              >
+                <ul className="navbar-nav">
+                  <li className="nav-item">
+                    <a className="nav-link" href="#impact">
+                      Impact
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#startups">
+                      Startups
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#partners">
+                      Sponsors
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#events">
+                      Events
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        );
+      }
+
+      function Hero() {
+        return (
+          <header className="hero">
+            <h1>Empowering Makers\u00A0\u2022\u00A02007\u20132018</h1>
+            <p className="lead mb-3">
+              Education, community, and innovation at the edge of possibility.
+            </p>
+            <a className="btn btn-cta btn-lg" href="#impact">
+              Explore Our Legacy
+            </a>
+          </header>
+        );
+      }
+
+      function Impact() {
+        return (
+          <section id="impact">
+            <div className="container">
+              <h2 className="section-title">Our Impact</h2>
+              <div className="row g-4">
+                {impactStats.map((stat) => (
+                  <div key={stat.title} className="col-md-4">
+                    <div className="card p-4 text-center">
+                      <div className="card-icon mb-2">{stat.icon}</div>
+                      <h3 className="h5">{stat.title}</h3>
+                      <p className="mb-0">{stat.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      function Startups() {
+        return (
+          <section id="startups" className="bg-white">
+            <div className="container">
+              <h2 className="section-title">Startups We Helped Launch</h2>
+              <div className="row g-4">
+                {startups.map((s) => (
+                  <div key={s.name} className="col-md-4">
+                    <div className="card h-100">
+                      <img src={s.img} className="card-img-top" alt={s.name} />
+                      <div className="card-body">
+                        <h3 className="h5">{s.name}</h3>
+                        <p className="card-text">{s.desc}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      function Partners() {
+        return (
+          <section id="partners">
+            <div className="container">
+              <h2 className="section-title">
+                Sponsors\u00A0& Community Partners
+              </h2>
+              <div className="row g-4 align-items-center logo-grid">
+                {partners.map((p, i) => (
+                  <div key={i} className="col-6 col-md-3">
+                    <img className="img-fluid" src={p.img} alt={p.alt} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      function Events() {
+        return (
+          <section id="events" className="bg-white">
+            <div className="container">
+              <h2 className="section-title">Exhibitions\u00A0& Shows</h2>
+              <ul className="list-group list-group-flush">
+                {events.map((e) => (
+                  <li key={e.title} className="list-group-item bg-white">
+                    <strong>{e.title}:</strong> {e.desc}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        );
+      }
+
+      function Footer() {
+        return (
+          <footer>
+            <div className="container">
+              <p className="mb-0">
+                Operated\u00A02007\u20132018 \u2022 Site preserved for archival
+                purposes
+              </p>
+            </div>
+          </footer>
+        );
+      }
+
+      function App() {
+        return (
+          <>
+            <Navbar />
+            <Hero />
+            <Impact />
+            <Startups />
+            <Partners />
+            <Events />
+            <Footer />
+          </>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+    <script src="libs/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
