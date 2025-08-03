@@ -8,7 +8,11 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link href="libs/bootstrap.min.css" rel="stylesheet" />
+    <link 
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
     <style>
       :root {
         --fl-blue: #00a6d6;
@@ -34,7 +38,7 @@
         position: relative;
         height: 65vh;
         min-height: 400px;
-        background: url("https://web.archive.org/web/20151001004853im_/http://www.fablabsd.org/wp-content/uploads/2015/09/fablab_banner.jpg")
+        background: url("img/Interior_Crowd_ReLaunch-e14255942269071.jpg")
           center/cover no-repeat;
         color: #fff;
         display: flex;
@@ -94,72 +98,84 @@
         max-height: 60px;
         object-fit: contain;
         filter: grayscale(100%) contrast(90%);
+        background: #f0f0f0;
+        padding: 8px;
+        border-radius: 4px;
       }
       .logo-grid img:hover {
         filter: none;
         transition: 0.2s ease-in-out;
+      }
+      .logo-placeholder {
+        max-height: 60px;
+        background: #e9ecef;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        color: #6c757d;
+        padding: 8px;
+        text-align: center;
+        min-height: 44px;
       }
     </style>
   </head>
   <body>
     <div id="root"></div>
 
-    <script
-      crossorigin
-      src="https://unpkg.com/react@18/umd/react.development.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/babel-standalone@6/babel.min.js"
-    ></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
+      // Debug: Check if React is loaded
+      console.log('React:', typeof React);
+      console.log('ReactDOM:', typeof ReactDOM);
+      
       const impactStats = [
         {
           icon: "📚",
-          title: "4,000+ K\u201112 Learners",
-          text: "Free & low\u2011cost STEAM workshops across San Diego County.",
+          title: "4,000+ K-12 Learners",
+          text: "Free & low-cost STEAM workshops across San Diego County.",
         },
         {
           icon: "🛠️",
-          title: "$3.6\u202FM in Prototypes",
-          text: "Ideas realized using 3\u2011D printing, CNC, electronics, and skilled mentorship.",
+          title: "$3.6M in Prototypes",
+          text: "Ideas realized using 3-D printing, CNC, electronics, and skilled mentorship.",
         },
         {
           icon: "🎪",
-          title: "25\u202Fk Maker Faire Visitors",
-          text: "Co\u2011produced the region's signature maker celebration every fall.",
+          title: "25k Maker Faire Visitors",
+          text: "Co-produced the region's signature maker celebration every fall.",
         },
       ];
 
       const startups = [
         {
           img: "logos/robo3d.svg",
-          name: "Robo\u00A03D",
-          desc: "Iterated its first desktop 3\u2011D printer in our shop and raised\u00A0$650\u202Fk on Kickstarter.",
+          name: "Robo 3D",
+          desc: "Iterated its first desktop 3-D printer in our shop and raised $650k on Kickstarter.",
         },
       
         {
           img: "logos/pocket_drone.svg",
       
-          name: "Pocket\u00A0Drone",
-          desc: "AirDroids founders built and flight\u2011tested ultralight multirotor prototypes here.",
+          name: "Pocket Drone",
+          desc: "AirDroids founders built and flight-tested ultralight multirotor prototypes here.",
         },
       
         {
           img: "logos/opensource_skateboards.svg",
-          name: "Open\u00A0Source Skateboards",
-          desc: "Pioneered vacuum\u2011press techniques and curriculum for DIY deck building.",
+          name: "Open Source Skateboards",
+          desc: "Pioneered vacuum-press techniques and curriculum for DIY deck building.",
         },
       ];
 
       const partners = [
-        { img: "logos/sdge.svg", alt: "SDG&E logo" },
-        { img: "logos/access_inc.svg", alt: "Access\u00A0Inc." },
+        { img: "logos/sdge.svg", alt: "San Diego Gas and Electric" },
+        { img: "logos/access_inc.svg", alt: "Access Inc." },
         { img: "logos/sdwp.svg", alt: "Workforce Partnership" },
         { img: "logos/ansir.svg", alt: "Ansir Innovation Center" },
         {
@@ -182,21 +198,36 @@
 
       const events = [
         {
-          title: "South\u00A0by\u00A0Southwest Interactive (Austin,\u00A0TX)",
-          desc: "Panel sessions on maker education & open hardware (2012\u20132013).",
+          title: "South by Southwest Interactive (Austin, TX)",
+          desc: "Panel sessions on maker education & open hardware (2012–2013).",
         },
         {
-          title: "Maker\u00A0Faire Bay Area (San\u00A0Mateo,\u00A0CA)",
-          desc: "Annual exhibits and hands\u2011on demos, 2008\u20132018.",
+          title: "Maker Faire Bay Area (San Mateo, CA)",
+          desc: "Annual exhibits and hands-on demos, 2008–2018. The flagship event that started in 2006 with 20,000 attendees, growing to over 200 worldwide.",
         },
         {
-          title: "San\u00A0Jose Mini\u00A0Maker\u00A0Faire (History\u00A0Park)",
-          desc: "Interactive booths and STEM workshops, 2015\u20132019.",
+          title: "San Jose Mini Maker Faire (History Park)",
+          desc: "Interactive booths and STEM workshops, 2015–2019. Part of the global Mini Maker Faire network.",
         },
         {
-          title:
-            "White House Maker\u00A0Faire (Washington,\u00A0DC \u2022 2014)",
-          desc: "Mobile Fab\u00A0Lab showcase hosted by Neil\u00A0Gershenfeld.",
+          title: "White House Maker Faire (Washington, DC • 2014)",
+          desc: "Mobile Fab Lab showcase hosted by Neil Gershenfeld. The first and only White House Maker Faire, hosted by President Obama on June 18, 2014.",
+        },
+        {
+          title: "Maker Faire Austin (Texas)",
+          desc: "Regional maker celebration, 2008–2016. Featured large-scale kinetic sculptures and DIY innovation.",
+        },
+        {
+          title: "World Maker Faire New York (Queens)",
+          desc: "East Coast flagship event, 2010–2019. Held at the New York Hall of Science with international makers.",
+        },
+        {
+          title: "Fab Lab Global Conference",
+          desc: "Annual international gathering of digital fabrication labs, featuring workshops and collaboration sessions.",
+        },
+        {
+          title: "Bay Area Science Festival",
+          desc: "Regional science outreach events throughout Northern California, promoting STEM education and maker culture.",
         },
       ];
 
@@ -253,7 +284,7 @@
       function Hero() {
         return (
           <header className="hero">
-            <h1>Empowering Makers\u00A0\u2022\u00A02007\u20132018</h1>
+            <h1>Empowering Makers • 2007–2018</h1>
             <p className="lead mb-3">
               Education, community, and innovation at the edge of possibility.
             </p>
@@ -289,12 +320,23 @@
         return (
           <section id="startups" className="bg-white">
             <div className="container">
-              <h2 className="section-title">Startups We Helped Launch</h2>
+              <h2 className="section-title">Startups We Helped Grow</h2>
               <div className="row g-4">
                 {startups.map((s) => (
                   <div key={s.name} className="col-md-4">
                     <div className="card h-100">
-                      <img src={s.img} className="card-img-top" alt={s.name} />
+                      <img 
+                        src={s.img} 
+                        className="card-img-top" 
+                        alt={s.name}
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'flex';
+                        }}
+                      />
+                      <div className="logo-placeholder" style={{display: 'none', margin: '20px'}}>
+                        {s.name}
+                      </div>
                       <div className="card-body">
                         <h3 className="h5">{s.name}</h3>
                         <p className="card-text">{s.desc}</p>
@@ -313,12 +355,23 @@
           <section id="partners">
             <div className="container">
               <h2 className="section-title">
-                Sponsors\u00A0& Community Partners
+                Sponsors & Community Partners
               </h2>
               <div className="row g-4 align-items-center logo-grid">
                 {partners.map((p, i) => (
                   <div key={i} className="col-6 col-md-3">
-                    <img className="img-fluid" src={p.img} alt={p.alt} />
+                    <img 
+                      className="img-fluid" 
+                      src={p.img} 
+                      alt={p.alt}
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div className="logo-placeholder" style={{display: 'none'}}>
+                      {p.alt}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -331,7 +384,7 @@
         return (
           <section id="events" className="bg-white">
             <div className="container">
-              <h2 className="section-title">Exhibitions\u00A0& Shows</h2>
+              <h2 className="section-title">Exhibitions & Shows</h2>
               <ul className="list-group list-group-flush">
                 {events.map((e) => (
                   <li key={e.title} className="list-group-item bg-white">
@@ -349,7 +402,7 @@
           <footer>
             <div className="container">
               <p className="mb-0">
-                Operated\u00A02007\u20132018 \u2022 Site preserved for archival
+                Operated 2007–2018 • Site preserved for archival
                 purposes
               </p>
             </div>
@@ -373,7 +426,13 @@
 
       const root = ReactDOM.createRoot(document.getElementById("root"));
       root.render(<App />);
+      
+      // Debug: Confirm render attempt
+      console.log('App render attempted');
     </script>
-    <script src="libs/bootstrap.bundle.min.js"></script>
+    <script 
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous">
+    </script>
   </body>
 </html>
