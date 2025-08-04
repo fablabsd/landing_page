@@ -13,6 +13,11 @@
       rel="stylesheet"
       crossorigin="anonymous"
     />
+    <link 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
     <style>
       :root {
         --fl-blue: #006699;
@@ -702,14 +707,246 @@
         return (
           <section id="events" className="bg-white">
             <div className="container">
-              <h2 className="section-title">Exhibitions & Shows</h2>
-              <ul className="list-group list-group-flush">
-                {events.map((e) => (
-                  <li key={e.title} className="list-group-item bg-white">
-                    <strong>{e.title}:</strong> {e.desc}
-                  </li>
-                ))}
-              </ul>
+              <h2 className="section-title">Exhibitions & Major Events</h2>
+              <p className="lead text-center mb-5">
+                Fab Lab San Diego brought maker culture to the world stage through groundbreaking exhibitions, 
+                collaborative art installations, and international showcases that defined the maker movement.
+              </p>
+              
+              {/* Timeline */}
+              <div className="position-relative" style={{paddingLeft: '2rem'}}>
+                {/* Timeline line */}
+                <div 
+                  className="position-absolute d-none d-md-block" 
+                  style={{
+                    left: '1rem',
+                    top: '1rem',
+                    bottom: '1rem',
+                    width: '4px',
+                    background: 'linear-gradient(180deg, var(--fl-blue) 0%, var(--fl-accent) 50%, var(--fl-blue) 100%)',
+                    borderRadius: '2px'
+                  }}
+                ></div>
+
+                {/* Timeline Events */}
+                <div className="row g-4">
+                  <div className="col-12">
+                    <div className="card border-0 shadow-sm position-relative" style={{marginLeft: '1.5rem', background: 'linear-gradient(135deg, #fff 0%, #f8f9fa 100%)'}}>
+                      <div 
+                        className="position-absolute d-none d-md-block rounded-circle bg-white border border-3" 
+                        style={{
+                          left: '-3rem',
+                          top: '1.5rem',
+                          width: '2rem',
+                          height: '2rem',
+                          borderColor: 'var(--fl-blue)',
+                          background: 'var(--fl-blue)'
+                        }}
+                      ></div>
+                      <div className="card-body p-4">
+                        <div className="d-flex align-items-center mb-3">
+                          <span className="badge bg-primary me-3 px-3 py-2" style={{background: 'var(--fl-blue)'}}>2008–2018</span>
+                          <h4 className="h5 mb-0" style={{color: 'var(--fl-blue)'}}>Maker Faire Bay Area (San Mateo, CA)</h4>
+                        </div>
+                        <p className="mb-0">
+                          <strong>Annual flagship presence at the world's largest maker celebration.</strong> Featured large-scale kinetic installations, 
+                          live fabrication demos, and collaborative maker workshops. Grew from 20,000 to 200,000+ attendees annually, 
+                          establishing Fab Lab SD as a cornerstone of the international maker movement.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-12">
+                    <div className="card border-0 shadow-sm position-relative" style={{marginLeft: '1.5rem', background: 'linear-gradient(135deg, #fff 0%, #f8f9fa 100%)'}}>
+                      <div 
+                        className="position-absolute d-none d-md-block rounded-circle bg-white border border-3" 
+                        style={{
+                          left: '-3rem',
+                          top: '1.5rem',
+                          width: '2rem',
+                          height: '2rem',
+                          borderColor: 'var(--fl-accent)',
+                          background: 'var(--fl-accent)'
+                        }}
+                      ></div>
+                      <div className="card-body p-4">
+                        <div className="d-flex align-items-center mb-3">
+                          <span className="badge me-3 px-3 py-2" style={{background: 'var(--fl-accent)'}}>2011–2013</span>
+                          <h4 className="h5 mb-0" style={{color: 'var(--fl-blue)'}}>Digital Fabrication in Contemporary Art</h4>
+                        </div>
+                        <p className="mb-2">
+                          <strong>Katie Rast collaborative installations</strong> at New Children's Museum, San Diego History Center, 
+                          and Museum of Contemporary Art San Diego. Interactive exhibits explored the intersection of traditional 
+                          craftsmanship and digital making, featuring responsive sculptures and community-built installations.
+                        </p>
+                        <div className="row g-2 mt-2">
+                          <div className="col-md-4">
+                            <div className="badge bg-light text-dark border">New Children's Museum</div>
+                          </div>
+                          <div className="col-md-4">
+                            <div className="badge bg-light text-dark border">SD History Center</div>
+                          </div>
+                          <div className="col-md-4">
+                            <div className="badge bg-light text-dark border">MCASD</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-12">
+                    <div className="card border-0 shadow-sm position-relative" style={{marginLeft: '1.5rem', background: 'linear-gradient(135deg, #fff8e6 0%, #fff 100%)'}}>
+                      <div 
+                        className="position-absolute d-none d-md-block rounded-circle bg-white border border-3" 
+                        style={{
+                          left: '-3rem',
+                          top: '1.5rem',
+                          width: '2rem',
+                          height: '2rem',
+                          borderColor: '#FFD700',
+                          background: '#FFD700'
+                        }}
+                      ></div>
+                      <div className="card-body p-4">
+                        <div className="d-flex align-items-center mb-3">
+                          <span className="badge me-3 px-3 py-2" style={{background: '#FFD700', color: '#333'}}>June 18, 2014</span>
+                          <h4 className="h5 mb-0" style={{color: 'var(--fl-blue)'}}>White House Maker Faire (Washington, DC)</h4>
+                          <i className="fas fa-star ms-2" style={{color: '#FFD700'}}></i>
+                        </div>
+                        <p className="mb-0">
+                          <strong>The first and only White House Maker Faire.</strong> Mobile Fab Lab showcase hosted by Neil Gershenfeld 
+                          and President Obama. Featured live demonstrations of digital fabrication technology on the South Lawn, 
+                          representing the global Fab Lab network and American innovation leadership.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-12">
+                    <div className="card border-0 shadow-sm position-relative" style={{marginLeft: '1.5rem', background: 'linear-gradient(135deg, #fff 0%, #f8f9fa 100%)'}}>
+                      <div 
+                        className="position-absolute d-none d-md-block rounded-circle bg-white border border-3" 
+                        style={{
+                          left: '-3rem',
+                          top: '1.5rem',
+                          width: '2rem',
+                          height: '2rem',
+                          borderColor: 'var(--fl-blue)',
+                          background: 'var(--fl-blue)'
+                        }}
+                      ></div>
+                      <div className="card-body p-4">
+                        <div className="d-flex align-items-center mb-3">
+                          <span className="badge bg-primary me-3 px-3 py-2" style={{background: 'var(--fl-blue)'}}>2012–2013</span>
+                          <h4 className="h5 mb-0" style={{color: 'var(--fl-blue)'}}>South by Southwest Interactive (Austin, TX)</h4>
+                        </div>
+                        <p className="mb-0">
+                          <strong>Pioneering maker education panels and open hardware workshops.</strong> Led industry discussions 
+                          on democratizing manufacturing and STEM curriculum integration. Connected with global tech leaders 
+                          and established Fab Lab SD as a thought leader in educational maker spaces.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-12">
+                    <div className="card border-0 shadow-sm position-relative" style={{marginLeft: '1.5rem', background: 'linear-gradient(135deg, #fff 0%, #f8f9fa 100%)'}}>
+                      <div 
+                        className="position-absolute d-none d-md-block rounded-circle bg-white border border-3" 
+                        style={{
+                          left: '-3rem',
+                          top: '1.5rem',
+                          width: '2rem',
+                          height: '2rem',
+                          borderColor: 'var(--fl-accent)',
+                          background: 'var(--fl-accent)'
+                        }}
+                      ></div>
+                      <div className="card-body p-4">
+                        <div className="d-flex align-items-center mb-3">
+                          <span className="badge me-3 px-3 py-2" style={{background: 'var(--fl-accent)'}}>2015–2019</span>
+                          <h4 className="h5 mb-0" style={{color: 'var(--fl-blue)'}}>San Jose Mini Maker Faire (History Park)</h4>
+                        </div>
+                        <p className="mb-0">
+                          <strong>Regional maker celebration and STEM workshop hub.</strong> Interactive booths featuring 
+                          3D printing, laser cutting, and electronics prototyping. Part of the global Mini Maker Faire network 
+                          that expanded the maker movement beyond flagship events to local communities.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-12">
+                    <div className="card border-0 shadow-sm position-relative" style={{marginLeft: '1.5rem', background: 'linear-gradient(135deg, #fff 0%, #f8f9fa 100%)'}}>
+                      <div 
+                        className="position-absolute d-none d-md-block rounded-circle bg-white border border-3" 
+                        style={{
+                          left: '-3rem',
+                          top: '1.5rem',
+                          width: '2rem',
+                          height: '2rem',
+                          borderColor: 'var(--fl-blue)',
+                          background: 'var(--fl-blue)'
+                        }}
+                      ></div>
+                      <div className="card-body p-4">
+                        <div className="d-flex align-items-center mb-3">
+                          <span className="badge bg-primary me-3 px-3 py-2" style={{background: 'var(--fl-blue)'}}>Annual</span>
+                          <h4 className="h5 mb-0" style={{color: 'var(--fl-blue)'}}>International Fab Lab Conferences</h4>
+                        </div>
+                        <p className="mb-0">
+                          <strong>Global digital fabrication network gatherings.</strong> Featured workshops on distributed 
+                          manufacturing, maker education, and community lab development. Connected with 2,000+ fab labs 
+                          worldwide and shared San Diego's model for sustainable maker spaces.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-12">
+                    <div className="card border-0 shadow-sm position-relative" style={{marginLeft: '1.5rem', background: 'linear-gradient(135deg, #fff 0%, #f8f9fa 100%)'}}>
+                      <div 
+                        className="position-absolute d-none d-md-block rounded-circle bg-white border border-3" 
+                        style={{
+                          left: '-3rem',
+                          top: '1.5rem',
+                          width: '2rem',
+                          height: '2rem',
+                          borderColor: 'var(--fl-accent)',
+                          background: 'var(--fl-accent)'
+                        }}
+                      ></div>
+                      <div className="card-body p-4">
+                        <div className="d-flex align-items-center mb-3">
+                          <span className="badge me-3 px-3 py-2" style={{background: 'var(--fl-accent)'}}>2008–2016</span>
+                          <h4 className="h5 mb-0" style={{color: 'var(--fl-blue)'}}>Maker Faire Austin & Bay Area Science Festival</h4>
+                        </div>
+                        <p className="mb-0">
+                          <strong>Regional maker celebrations and science outreach.</strong> Featured large-scale kinetic sculptures, 
+                          DIY innovation showcases, and hands-on STEM education programs throughout Northern California. 
+                          Promoted maker culture and digital fabrication accessibility to diverse audiences.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Call to action */}
+                <div className="row mt-5">
+                  <div className="col-12">
+                    <div className="card border-0 text-center" style={{background: 'linear-gradient(135deg, var(--fl-blue) 0%, var(--fl-accent) 100%)', color: 'white'}}>
+                      <div className="card-body p-4">
+                        <h4 className="mb-3">Legacy Impact</h4>
+                        <p className="mb-0">
+                          Through these exhibitions and events, Fab Lab San Diego reached over <strong>200,000 makers</strong> 
+                          globally and helped establish the foundation for today's worldwide maker movement.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
         );
