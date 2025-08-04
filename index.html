@@ -15,10 +15,12 @@
     />
     <style>
       :root {
-        --fl-blue: #00a6d6;
-        --fl-dark: #222;
+        --fl-blue: #006699;
+        --fl-dark: #333333;
         --fl-light: #f8f9fa;
-        --fl-accent: #ff9d00;
+        --fl-accent: #FF6600;
+        --fl-secondary: #4A90A4;
+        --fl-neutral: #666666;
       }
       body {
         font-family: "Open Sans", sans-serif;
@@ -67,9 +69,13 @@
         border: none;
         color: #fff;
         font-weight: 600;
+        transition: all 0.3s ease;
       }
       .btn-cta:hover {
-        background: #ffa91f;
+        background: #E55A00;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(255, 102, 0, 0.3);
+        color: #fff;
       }
       section {
         padding: 4rem 0;
@@ -78,11 +84,29 @@
         text-align: center;
         font-weight: 600;
         margin-bottom: 2rem;
+        color: var(--fl-blue);
+        position: relative;
+      }
+      .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: var(--fl-accent);
+        border-radius: 2px;
       }
       .card {
         border: none;
         border-radius: 0.75rem;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 102, 153, 0.15);
       }
       .card-icon {
         font-size: 2.5rem;
@@ -95,16 +119,18 @@
         padding: 2rem 0;
       }
       .logo-grid img {
-        max-height: 60px;
+        max-height: 80px;
         object-fit: contain;
-        filter: grayscale(100%) contrast(90%);
-        background: #f0f0f0;
         padding: 8px;
         border-radius: 4px;
+        margin: 0 auto;
+        display: block;
       }
-      .logo-grid img:hover {
-        filter: none;
-        transition: 0.2s ease-in-out;
+      .card-img-top {
+        height: 150px;
+        object-fit: contain;
+        padding: 20px;
+        background: #fff;
       }
       .logo-placeholder {
         max-height: 60px;
@@ -119,6 +145,28 @@
         padding: 8px;
         text-align: center;
         min-height: 44px;
+        margin: 0 auto;
+      }
+      .banner-secondary {
+        position: relative;
+        height: 300px;
+        background: url("img/Interior_Crowd_ReLaunch-e14255942269071.jpg")
+          center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+      }
+      .banner-secondary::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 102, 153, 0.7);
+      }
+      .banner-secondary > * {
+        position: relative;
+        z-index: 1;
       }
     </style>
   </head>
@@ -142,7 +190,7 @@
         },
         {
           icon: "🛠️",
-          title: "$3.6M in Prototypes",
+          title: "$3.6M in Kickstarer Prototypes",
           text: "Ideas realized using 3-D printing, CNC, electronics, and skilled mentorship.",
         },
         {
@@ -154,46 +202,72 @@
 
       const startups = [
         {
-          img: "logos/robo3d.svg",
+          img: "https://robo3d.com/cdn/shop/t/4/assets/logo-inverted.png?v=183769956136692194061714583890",
           name: "Robo 3D",
           desc: "Iterated its first desktop 3-D printer in our shop and raised $650k on Kickstarter.",
         },
       
         {
-          img: "logos/pocket_drone.svg",
+          img: "logos/airdroids.png",
       
           name: "Pocket Drone",
-          desc: "AirDroids founders built and flight-tested ultralight multirotor prototypes here.",
+          desc: "AirDroids founders built and flight-tested ultralight multirotor prototypes here. Raised $929k on Kickstarter.",
         },
       
         {
-          img: "logos/opensource_skateboards.svg",
+          img: "logos/openskateboards.png",
           name: "Open Source Skateboards",
-          desc: "Pioneered vacuum-press techniques and curriculum for DIY deck building.",
+          desc: "Pioneered vacuum-press techniques and curriculum for DIY deck building. Raised $65k on Kickstarter.",
+        },
+        
+        {
+          img: "logos/feetz.png",
+          name: "FeetZ",
+          desc: "Reinvented how footwear is made so you can have shoes custom made in 7 days. Raised $422k on Kickstarter.",
+        },
+        
+        {
+          img: "logos/pond2.png",
+          name: "Pond Wireless Charging",
+          desc: "Pioneered Qi charging for Apple Devices, eventually joining the Apple team and bringing the capability in-house. Raised $184k on Kickstarter.",
+        },
+        
+        {
+          img: "logos/cleverpet.png",
+          name: "CleverPet",
+          desc: "Maker of the first and only game console for dogs and cats. Raised $289k on Kickstarter.",
+        },
+
+        {
+          img: "logos/hush.png",
+          name: "Hush Technology",
+          desc: "Hush is a new kind of sleep wearable that helps tinnitus sufferers and others by combining noise isolation in the form of earplugs with access to 15 different soothing sound tracks to block out disturbing noises via a smartphone app. Raised $1.1M on Kickstarter.",
+        },
+
+        {
+          img: "https://tinylabs.io/wp-content/uploads/2020/02/keysy_l9_96.png",
+          name: "Tiny Labs",
+          desc: "Developed innovative miniaturized electronics and IoT solutions through rapid prototyping and testing at Fab Lab SD.",
         },
       ];
 
       const partners = [
-        { img: "logos/sdge.svg", alt: "San Diego Gas and Electric" },
-        { img: "logos/access_inc.svg", alt: "Access Inc." },
-        { img: "logos/sdwp.svg", alt: "Workforce Partnership" },
-        { img: "logos/ansir.svg", alt: "Ansir Innovation Center" },
-        {
-          img: "logos/qualcomm_robotics.svg",
-          alt: "Qualcomm Robotics Accelerator",
-        },
-        {
-          img: "logos/cfa_brigade.svg",
-          alt: "Code for America Brigade",
-        },
-        { img: "logos/maker_faire_sd.svg", alt: "Maker Faire San Diego" },
-        { img: "logos/formlabs.svg", alt: "Formlabs" },
-        { img: "logos/xyzprinting.svg", alt: "XYZprinting" },
-        { img: "logos/solidworks.svg", alt: "SolidWorks" },
-        { img: "logos/epilog_laser.svg", alt: "Epilog Laser" },
-        { img: "logos/startup_san_diego.svg", alt: "Startup San Diego" },
-        { img: "logos/startup_weekend.svg", alt: "Startup Weekend" },
-        { img: "logos/connect_sd.svg", alt: "San Diego CONNECT" },
+        { img: "https://www.sdge.com/themes/custom/sdge/logo.svg", alt: "San Diego Gas and Electric" },
+        { img: "logos/access.png", alt: "Access Inc." },
+        { img: "logos/workforce.png", alt: "San Diego Workforce Partnership" },
+        { img: "https://www.sandiego.gov/themes/custom/sand/images/cosd-logo/cosd-logo-initials-blue-color-sails.svg", alt: "San Diego Public Library" },
+        { img: "logos/ansir.png", alt: "Ansir Innovation Center" },
+        { img: "logos/qualcomm.png", alt: "Qualcomm Robotics Accelerator"},
+        { img: "logos/codeAmerica.png", alt: "Code for America Brigade"},
+        { img: "logos/makerFaireSanDiego.png", alt: "Maker Faire San Diego" },
+        { img: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d2/Formlabs_logo.svg/320px-Formlabs_logo.svg.png", alt: "Formlabs" },
+        { img: "logos/xyzprinting.png", alt: "XYZprinting" },
+        { img: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d2/SolidWorks_Logo.svg/320px-SolidWorks_Logo.svg.png", alt: "SolidWorks" },
+        { img: "logos/epilog.png", alt: "Epilog Laser" },
+        { img: "https://startupsd.org/wp-content/uploads/elementor/thumbs/SSD-StartupSD-San-Diego-California-Entrepreneur-Business-Tech-Community-Events-2019-Organization-Logo-01-2-2-1-q8q00hwdtm6p5xwxks1p5uzb8pz3lwg9v2qkanqin0.png", alt: "Startup San Diego" },
+        { img: "https://upload.wikimedia.org/wikipedia/commons/4/48/Techstars_logo.png", alt: "Startup Weekend" },
+        { img: "logos/connect.png", alt: "San Diego CONNECT" },
+        { img: "logos/lrng.png", alt: "LRNG" }
       ];
 
       const events = [
@@ -218,10 +292,6 @@
           desc: "Regional maker celebration, 2008–2016. Featured large-scale kinetic sculptures and DIY innovation.",
         },
         {
-          title: "World Maker Faire New York (Queens)",
-          desc: "East Coast flagship event, 2010–2019. Held at the New York Hall of Science with international makers.",
-        },
-        {
           title: "Fab Lab Global Conference",
           desc: "Annual international gathering of digital fabrication labs, featuring workshops and collaboration sessions.",
         },
@@ -235,8 +305,13 @@
         return (
           <nav className="navbar navbar-expand-lg fixed-top shadow-sm">
             <div className="container">
-              <a className="navbar-brand fw-bold" href="#">
-                Fab Lab San Diego
+              <a className="navbar-brand fw-bold d-flex align-items-center" href="#">
+                <img 
+                  src="https://www.designbyreva.com/wp-content/uploads/2016/12/FabLabSD_logo.png" 
+                  height="55"
+                  className="me-2"
+                  style={{objectFit: 'contain', filter: 'brightness(0)'}}
+                />
               </a>
               <button
                 className="navbar-toggler"
@@ -257,6 +332,11 @@
                   <li className="nav-item">
                     <a className="nav-link" href="#impact">
                       Impact
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#education">
+                      Education
                     </a>
                   </li>
                   <li className="nav-item">
@@ -316,6 +396,171 @@
         );
       }
 
+      function Banner() {
+        return (
+          <section className="banner-secondary">
+            <div className="container">
+              <div className="row">
+                <div className="col-12">
+                  <h2 className="h1 mb-3" style={{fontWeight: '700', textShadow: '0 2px 4px rgba(0,0,0,0.5)'}}>
+                    Supporting Innovation in San Diego
+                  </h2>
+                  <p className="lead mb-0" style={{textShadow: '0 1px 3px rgba(0,0,0,0.5)'}}>
+                    Providing access to tools, teams, and training for local entrepreneurs and makers.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      function Education() {
+        return (
+          <section id="education" className="bg-white">
+            <div className="container">
+              <h2 className="section-title">K-12 STEM Education</h2>
+              <div className="row mb-5">
+                <div className="col-lg-8 mx-auto text-center">
+                  <p className="lead mb-4">
+                    Fab Lab San Diego pioneered hands-on STEM education across San Diego County, 
+                    bringing digital fabrication tools and maker methodologies directly into classrooms and community centers.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="row g-4 mb-5">
+                <div className="col-md-6">
+                  <div className="card h-100 p-4">
+                    <div className="mb-3 text-center">
+                      <img 
+                        src="img/hp-headerfill.jpg" 
+                        alt="Fab Lab San Diego hands-on learning" 
+                        style={{width: '120px', height: '80px', objectFit: 'cover', borderRadius: '8px'}}
+                      />
+                    </div>
+                    <h4 className="h5 mb-3" style={{color: 'var(--fl-blue)'}}>Hands-On Learning</h4>
+                    <p className="mb-0">
+                      Students learned engineering design thinking through project-based activities using 3D printers, 
+                      laser cutters, and Arduino microcontrollers. From designing custom phone cases to building 
+                      robotic prototypes, every lesson connected digital design to physical creation.
+                    </p>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="card h-100 p-4">
+                    <div className="mb-3 text-center">
+                      <img 
+                        src="img/Interior_Crowd_ReLaunch-e14255942269071.jpg" 
+                        alt="Fab Lab San Diego teacher professional development" 
+                        style={{width: '120px', height: '80px', objectFit: 'cover', borderRadius: '8px'}}
+                      />
+                    </div>
+                    <h4 className="h5 mb-3" style={{color: 'var(--fl-blue)'}}>Teacher Professional Development</h4>
+                    <p className="mb-0">
+                      We trained over 150 educators in digital fabrication techniques and curriculum integration. 
+                      Teachers learned to use CAD software, operate fabrication equipment safely, and design 
+                      interdisciplinary projects that met California NGSS standards.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="row g-4 mb-5">
+                <div className="col-md-4">
+                  <div className="card p-4 text-center h-100">
+                    <div className="mb-3">
+                      <img 
+                        src="img/Interior_Crowd_ReLaunch-e14255942269071.jpg" 
+                        alt="Fab Lab San Diego school partnerships" 
+                        style={{width: '80px', height: '60px', objectFit: 'cover', borderRadius: '8px', margin: '0 auto', display: 'block'}}
+                      />
+                    </div>
+                    <h5 className="mb-3" style={{color: 'var(--fl-blue)'}}>School Partnerships</h5>
+                    <p className="mb-0">
+                      Collaborated with 25+ schools across SDUSD, Poway USD, and Sweetwater USD, 
+                      establishing maker programs and providing ongoing curriculum support.
+                    </p>
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <div className="card p-4 text-center h-100">
+                    <div className="mb-3">
+                      <img 
+                        src="img/hp-headerfill.jpg" 
+                        alt="Fab Lab San Diego mobile fabrication lab" 
+                        style={{width: '100px', height: '80px', objectFit: 'cover', borderRadius: '8px', margin: '0 auto', display: 'block'}}
+                      />
+                    </div>
+                    <h5 className="mb-3" style={{color: 'var(--fl-blue)'}}>Mobile Fab Lab</h5>
+                    <p className="mb-0">
+                      Our custom-built mobile unit brought 3D printing and laser cutting directly to 
+                      underserved communities, reaching students who couldn't visit our main facility.
+                    </p>
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <div className="card p-4 text-center h-100">
+                    <div className="mb-3">
+                      <img 
+                        src="img/Interior_Crowd_ReLaunch-e14255942269071.jpg" 
+                        alt="Fab Lab San Diego summer camps" 
+                        style={{width: '100px', height: '80px', objectFit: 'cover', borderRadius: '8px', margin: '0 auto', display: 'block'}}
+                      />
+                    </div>
+                    <h5 className="mb-3" style={{color: 'var(--fl-blue)'}}>Summer Camps</h5>
+                    <p className="mb-0">
+                      Week-long intensive camps introduced middle and high school students to 
+                      engineering design, coding, and entrepreneurship through maker projects.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col-lg-10 mx-auto">
+                  <div className="card border-0" style={{background: 'linear-gradient(135deg, #f8f9fa 0%, #e6f2f7 100%)'}}>
+                    <div className="card-body p-4">
+                      <h4 className="text-center mb-3" style={{color: 'var(--fl-blue)', fontWeight: '600'}}>
+                        Curriculum Highlights
+                      </h4>
+                      <div className="row g-3">
+                        <div className="col-md-6">
+                          <ul className="list-unstyled mb-0">
+                            <li className="mb-2">
+                              <strong>Design Thinking Workshops:</strong> Problem identification and iterative prototyping
+                            </li>
+                            <li className="mb-2">
+                              <strong>3D Modeling & Printing:</strong> Fusion 360, Tinkercad, and hands-on fabrication
+                            </li>
+                            <li className="mb-2">
+                              <strong>Electronics & Coding:</strong> Arduino programming and circuit design
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="col-md-6">
+                          <ul className="list-unstyled mb-0">
+                            <li className="mb-2">
+                              <strong>Laser Cutting Projects:</strong> Architecture models and custom jewelry design
+                            </li>
+                            <li className="mb-2">
+                              <strong>Robotics Challenges:</strong> Competition prep and autonomous vehicle design
+                            </li>
+                            <li className="mb-2">
+                              <strong>Entrepreneurship:</strong> Business plan development and pitch practice
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
       function Startups() {
         return (
           <section id="startups" className="bg-white">
@@ -345,6 +590,79 @@
                   </div>
                 ))}
               </div>
+
+              {/* Why it worked section */}
+              <div className="row mt-5">
+                <div className="col-12">
+                  <div className="card border-0" style={{background: 'linear-gradient(135deg, #f8f9fa 0%, #e6f2f7 100%)'}}>
+                    <div className="card-body p-5">
+                      <h3 className="text-center mb-4" style={{color: 'var(--fl-blue)', fontWeight: '700'}}>
+                        Why it worked
+                      </h3>
+                      <p className="lead text-center mb-4">
+                        Fab Lab SD sat at the intersection of cheap access, knowledgeable mentors, and a hyper-active maker scene. Startups leveraged:
+                      </p>
+                      
+                      <div className="row g-4 mb-4">
+                        <div className="col-md-4">
+                          <div className="text-center">
+                            <div className="mb-3" style={{fontSize: '2.5rem'}}>🔧</div>
+                            <h5 style={{color: 'var(--fl-blue)'}}>Industrial-Grade Tooling</h5>
+                            <p className="small">Tooling parity with $100k industrial shops—CNC routers, SLA printers, Epilog CO₂ lasers, and an electronics bench</p>
+                          </div>
+                        </div>
+                        <div className="col-md-4">
+                          <div className="text-center">
+                            <div className="mb-3" style={{fontSize: '2.5rem'}}>📢</div>
+                            <h5 style={{color: 'var(--fl-blue)'}}>Community Signal-Boost</h5>
+                            <p className="small">The lab's Meetup, Facebook, and Maker Faire channels funneled beta users and crowdfunding backers</p>
+                          </div>
+                        </div>
+                        <div className="col-md-4">
+                          <div className="text-center">
+                            <div className="mb-3" style={{fontSize: '2.5rem'}}>🎯</div>
+                            <h5 style={{color: 'var(--fl-blue)'}}>Expert Mentorship</h5>
+                            <p className="small">Staff like former Ops Manager Allen McAfee coached six hardware teams on design-for-manufacture and supply-chain setup</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <hr className="my-4" style={{background: 'var(--fl-blue)', height: '2px'}} />
+
+                      <h4 className="text-center mb-4" style={{color: 'var(--fl-accent)', fontWeight: '600'}}>
+                        Take-aways for would-be founders
+                      </h4>
+                      
+                      <div className="row g-3">
+                        <div className="col-md-4">
+                          <div className="d-flex align-items-start">
+                            <div className="me-3" style={{color: 'var(--fl-accent)', fontSize: '1.2rem', fontWeight: 'bold'}}>1.</div>
+                            <div>
+                              <strong>Prototype in public.</strong> Each of these teams demoed rough cuts at lab open nights long before hitting "publish" on Kickstarter.
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-md-4">
+                          <div className="d-flex align-items-start">
+                            <div className="me-3" style={{color: 'var(--fl-accent)', fontSize: '1.2rem', fontWeight: 'bold'}}>2.</div>
+                            <div>
+                              <strong>Leverage community clout.</strong> A shout-out from Fab Lab SD's socials routinely spiked campaign traffic by 10-20%.
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-md-4">
+                          <div className="d-flex align-items-start">
+                            <div className="me-3" style={{color: 'var(--fl-accent)', fontSize: '1.2rem', fontWeight: 'bold'}}>3.</div>
+                            <div>
+                              <strong>Share tooling costs.</strong> Group buys on materials and consolidated machine-time kept burn rates tolerable during pre-revenue months.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
         );
@@ -357,9 +675,9 @@
               <h2 className="section-title">
                 Sponsors & Community Partners
               </h2>
-              <div className="row g-4 align-items-center logo-grid">
+              <div className="row g-4 align-items-center justify-content-center logo-grid">
                 {partners.map((p, i) => (
-                  <div key={i} className="col-6 col-md-3">
+                  <div key={i} className="col-6 col-md-3 text-center">
                     <img 
                       className="img-fluid" 
                       src={p.img} 
@@ -416,6 +734,8 @@
             <Navbar />
             <Hero />
             <Impact />
+            <Education />
+            <Banner />
             <Startups />
             <Partners />
             <Events />

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" width="300" height="80">
+  <defs>
+    <style>
+      .fab-text { font-family: 'Arial', sans-serif; font-weight: bold; }
+      .fab-blue { fill: #006699; }
+      .fab-orange { fill: #FF6600; }
+      .fab-dark { fill: #333333; }
+    </style>
+  </defs>
+  
+  <!-- Background circle for "fab" -->
+  <circle cx="25" cy="40" r="20" class="fab-blue"/>
+  
+  <!-- "fab" text in white -->
+  <text x="25" y="46" text-anchor="middle" class="fab-text" fill="white" font-size="14">fab</text>
+  
+  <!-- "lab" text -->
+  <text x="55" y="35" class="fab-text fab-dark" font-size="18">lab</text>
+  
+  <!-- Location text -->
+  <text x="55" y="52" class="fab-text fab-orange" font-size="12">san diego</text>
+  
+  <!-- Decorative elements -->
+  <rect x="120" y="35" width="8" height="8" class="fab-orange"/>
+  <rect x="132" y="35" width="8" height="8" class="fab-blue"/>
+  <rect x="144" y="35" width="8" height="8" class="fab-orange"/>
+</svg>
