@@ -197,6 +197,23 @@
         font-weight: 600;
         font-size: 0.95rem;
       }
+      .leader-memoriam {
+        font-style: italic;
+        font-size: 0.9rem;
+        color: var(--fl-neutral);
+        border-top: 1px solid #e9ecef;
+        padding-top: 1rem;
+      }
+      .leader-memoriam-label {
+        display: block;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--fl-accent);
+        margin-bottom: 0.35rem;
+      }
     </style>
   </head>
   <body>
@@ -236,13 +253,14 @@
           initials: "XL",
           role: "Co-Founder",
           bio: "Xavier co-founded Fab Lab San Diego in 2007, partnering with MIT's Center for Bits and Atoms through his nonprofit Heads On Fire — whose Fab Lab became recognized as a national model for teaching technology in out-of-school settings — to bring the global Fab Lab network to San Diego. A designer, educator, and information-and-communications-technology (ICT) activist and Columbia University graduate, he founded Designers for Humanity in 2010 to deliver STEM experiences through service-learning projects that tackled real community challenges. His honors include a Zero Divide Z-Fellowship, an Ideas Institute Fellowship at the MIT Media Lab, a Pew Fellowship in the Arts, and a TEC Champion designation from Congress, and his experience-design work has been exhibited internationally at venues such as the Institute of Contemporary Art in London and Philadelphia, Seattle's Henry Art Gallery, and Franklin Furnace in New York. A frequent speaker — including at the UN World Summit on the Information Society and at TEDx — he later served as Public Technology and Data Strategist for the City of San Diego's Civic Innovation Lab and as a Senior Fellow in Emerging Technology at SDSU's Visualization Center, championing open access to advanced tools as a path to community empowerment and civic innovation.",
+          memoriam: "Xavier Leonard passed away in January 2026. A tireless advocate for democratizing technology, he believed that putting real tools in people's hands could change communities — a conviction that shaped Fab Lab San Diego and lives on in the makers it launched.",
         },
         {
           img: "team/katie-rast.jpg",
           name: "Katie Rast",
           initials: "KR",
           role: "Co-Founder & Director",
-          bio: "Katie co-founded and directed Fab Lab San Diego, working with MIT to launch the city's node in the global network of Fab Labs. From 2007 she built and ran the lab's youth and adult education programs, making more than 4,000 no-cost STEAM learning experiences possible for K-12 students, and became a leading voice for the maker movement, including a TEDx talk on \"the maker methodology.\" In partnership with the City of San Diego and the Balboa Park Cultural Partnership, she produced the region's first full-scale Maker Faire, drawing more than 25,000 attendees across 12 museums with over 250 exhibitors. Her passion for expanding access to learning at the earliest ages carried into her next chapter: as Director of Community Impact at the San Diego Foundation she led the region's Early Childhood Initiative, growing access to quality early care and education, and in 2025 she was named CEO of the Dr. Seuss Foundation.",
+          bio: "Katie co-founded Fab Lab San Diego and served as its founding executive director for a decade, working with MIT and the National Science Foundation to launch the city's node in the global network of Fab Labs — the first program of its kind in the region. From 2007 she built and ran the lab's youth and adult education programs, making more than 4,000 no-cost STEAM learning experiences possible for K-12 students, and she went on to build several instantiations of the lab across San Diego, extending the model into library makerspaces, a mobile fab lab, and GE's Brilliant Career Lab. A leading voice for the maker movement, she gave a TEDx talk on \"the maker methodology\" and, in partnership with the City of San Diego and the Balboa Park Cultural Partnership, produced the region's first full-scale Maker Faire, drawing more than 25,000 attendees across 12 museums with over 250 exhibitors. She continues to serve on the board of the Fab Foundation, the global nonprofit that supports the worldwide Fab Lab network. Her passion for expanding access to learning at the earliest ages carried into her next chapter: as Director of Community Impact at the San Diego Foundation she led the region's Early Childhood Initiative, growing access to quality early care and education, and in 2025 she was named CEO of the Dr. Seuss Foundation. A graduate of Goddard College, her work has been recognized by institutions including MIT, the United Nations, the World Bank, and USAID.",
         },
       ];
 
@@ -445,6 +463,12 @@
                       <h3 className="h5 mb-1">{leader.name}</h3>
                       <p className="leader-role mb-3">{leader.role}</p>
                       <p className="mb-0 text-start">{leader.bio}</p>
+                      {leader.memoriam && (
+                        <p className="leader-memoriam text-start mt-3 mb-0">
+                          <span className="leader-memoriam-label">In memoriam</span>
+                          {leader.memoriam}
+                        </p>
+                      )}
                     </div>
                   </div>
                 ))}
