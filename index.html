@@ -12,11 +12,6 @@
       href="libs/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link 
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-      rel="stylesheet"
-      crossorigin="anonymous"
-    />
     <style>
       :root {
         --fl-blue: #006699;
@@ -172,13 +167,43 @@
         position: relative;
         z-index: 1;
       }
+      .leader-avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 1rem;
+        display: block;
+        border: 4px solid #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+      .leader-avatar-placeholder {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 0 auto 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #fff;
+        background: linear-gradient(135deg, var(--fl-blue) 0%, var(--fl-secondary) 100%);
+        border: 4px solid #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+      .leader-role {
+        color: var(--fl-accent);
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
     </style>
   </head>
   <body>
     <div id="root"></div>
 
-    <script src="libs/react.development.js"></script>
-    <script src="libs/react-dom.development.js"></script>
+    <script src="libs/react.production.min.js"></script>
+    <script src="libs/react-dom.production.min.js"></script>
     <script src="libs/babel.min.js"></script>
 
     <script type="text/babel">
@@ -201,6 +226,23 @@
           icon: "🎪",
           title: "25k Maker Faire Visitors",
           text: "Co-organized San Diego's first Mini Maker Faire and championed the region's maker celebrations.",
+        },
+      ];
+
+      const leaders = [
+        {
+          img: "team/xavier-leonard.jpg",
+          name: "Xavier Leonard",
+          initials: "XL",
+          role: "Co-Founder",
+          bio: "Xavier co-founded Fab Lab San Diego in 2007, partnering with MIT's Center for Bits and Atoms through his nonprofit Heads On Fire to bring the global Fab Lab network to San Diego. A designer, educator, and information-and-communications-technology activist and Columbia University graduate, he went on to serve as Public Technology and Data Strategist for the City of San Diego's Civic Innovation Lab and as a Senior Fellow in Emerging Technology at SDSU's Visualization Center. He championed open access to advanced tools as a path to community empowerment and civic innovation.",
+        },
+        {
+          img: "team/katie-rast.jpg",
+          name: "Katie Rast",
+          initials: "KR",
+          role: "Co-Founder & Director",
+          bio: "Katie co-founded and directed Fab Lab San Diego, working with MIT to launch the city's node in the global network of Fab Labs. From 2007 she built and ran the lab's youth and adult education programs, making more than 4,000 no-cost STEAM learning experiences possible for K-12 students, and became a leading voice for the maker movement, including a TEDx talk on \"the maker methodology.\" In partnership with the City of San Diego and the Balboa Park Cultural Partnership, she produced the region's first full-scale Maker Faire, drawing more than 25,000 attendees across 12 museums with over 250 exhibitors. Her passion for expanding access to learning at the earliest ages carried into her next chapter: as Director of Community Impact at the San Diego Foundation she led the region's Early Childhood Initiative, growing access to quality early care and education, and in 2025 she was named CEO of the Dr. Seuss Foundation.",
         },
       ];
 
@@ -274,37 +316,6 @@
         { img: "logos/lrng.png", alt: "LRNG" }
       ];
 
-      const events = [
-        {
-          title: "South by Southwest Interactive (Austin, TX)",
-          desc: "Panel sessions on maker education & open hardware (2012–2013).",
-        },
-        {
-          title: "Maker Faire Bay Area (San Mateo, CA)",
-          desc: "Annual exhibits and hands-on demos, 2008–2018. The flagship event that started in 2006 with 20,000 attendees, growing to over 200 worldwide.",
-        },
-        {
-          title: "San Jose Mini Maker Faire (History Park)",
-          desc: "Interactive booths and STEM workshops, 2015–2019. Part of the global Mini Maker Faire network.",
-        },
-        {
-          title: "White House Maker Faire (Washington, DC • 2014)",
-          desc: "Mobile Fab Lab showcase hosted by Neil Gershenfeld. The first and only White House Maker Faire, hosted by President Obama on June 18, 2014.",
-        },
-        {
-          title: "Maker Faire Austin (Texas)",
-          desc: "Regional maker celebration, 2008–2016. Featured large-scale kinetic sculptures and DIY innovation.",
-        },
-        {
-          title: "Fab Lab Global Conference",
-          desc: "Annual international gathering of digital fabrication labs, featuring workshops and collaboration sessions.",
-        },
-        {
-          title: "Bay Area Science Festival",
-          desc: "Regional science outreach events throughout Northern California, promoting STEM education and maker culture.",
-        },
-      ];
-
       function Navbar() {
         return (
           <nav className="navbar navbar-expand-lg fixed-top shadow-sm">
@@ -337,6 +348,11 @@
                   <li className="nav-item">
                     <a className="nav-link" href="#impact">
                       Impact
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#leaders">
+                      Leaders
                     </a>
                   </li>
                   <li className="nav-item">
@@ -392,6 +408,43 @@
                       <div className="card-icon mb-2">{stat.icon}</div>
                       <h3 className="h5">{stat.title}</h3>
                       <p className="mb-0">{stat.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      function Leadership() {
+        return (
+          <section id="leaders" className="bg-white">
+            <div className="container">
+              <h2 className="section-title">Lab Leadership</h2>
+              <p className="lead text-center mb-5">
+                Fab Lab San Diego was founded and led by two makers committed to opening advanced
+                fabrication tools to everyone.
+              </p>
+              <div className="row g-4 justify-content-center">
+                {leaders.map((leader) => (
+                  <div key={leader.name} className="col-md-6">
+                    <div className="card h-100 p-4 text-center">
+                      <img
+                        src={leader.img}
+                        className="leader-avatar"
+                        alt={leader.name}
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'flex';
+                        }}
+                      />
+                      <div className="leader-avatar-placeholder" style={{display: 'none'}}>
+                        {leader.initials}
+                      </div>
+                      <h3 className="h5 mb-1">{leader.name}</h3>
+                      <p className="leader-role mb-3">{leader.role}</p>
+                      <p className="mb-0 text-start">{leader.bio}</p>
                     </div>
                   </div>
                 ))}
@@ -777,7 +830,7 @@
                         <div className="d-flex align-items-center mb-3">
                           <span className="badge me-3 px-3 py-2" style={{background: '#FFD700', color: '#333'}}>June 18, 2014</span>
                           <h4 className="h5 mb-0" style={{color: 'var(--fl-blue)'}}>White House Maker Faire (Washington, DC)</h4>
-                          <i className="fas fa-star ms-2" style={{color: '#FFD700'}}></i>
+                          <span className="ms-2" style={{color: '#FFD700', fontSize: '1.1rem'}}>★</span>
                         </div>
                         <p className="mb-0">
                           <strong>The first and only White House Maker Faire.</strong> Mobile Fab Lab showcase hosted by Neil Gershenfeld 
@@ -1096,6 +1149,7 @@
             <Navbar />
             <Hero />
             <Impact />
+            <Leadership />
             <Education />
             <Banner />
             <Startups />
